@@ -391,7 +391,7 @@ section {
   overflow: hidden;
   box-shadow: 0 10px 40px -8px rgba(124, 107, 255, 0.5);
 }
-.prof-photo img { width: 100%; height: 100%; object-fit: cover; }
+.prof-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .prof-info { flex: 1; }
 .prof-info h3 { font-size: 1.5rem; font-weight: 800; }
 .prof-en { font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim); font-weight: 400; margin-left: 6px; }
@@ -446,7 +446,7 @@ section {
   background: linear-gradient(135deg, hsl(var(--h, 212) 85% 62%), hsl(calc(var(--h, 212) + 45) 75% 55%));
   box-shadow: 0 6px 22px -6px hsl(var(--h, 212) 85% 62% / 0.55);
 }
-.member-photo { object-fit: cover; box-shadow: 0 6px 22px -6px rgba(79, 140, 255, 0.45); }
+.member-photo { object-fit: cover; object-position: center 30%; box-shadow: 0 6px 22px -6px rgba(79, 140, 255, 0.45); }
 .member-card h3 { font-size: 1.05rem; font-weight: 800; }
 .member-en { display: block; font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); font-weight: 400; margin-top: 2px; }
 .member-role { font-size: 0.82rem; color: var(--accent); font-weight: 700; margin-top: 6px; }
