@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoML Lab — 경기대학교 AI컴퓨터공학부</title>
+  <meta name="description" content="경기대학교 AI컴퓨터공학부 AutoML Lab. Neural Architecture Search, 효율적 딥러닝, 특징 선택, 진화 알고리즘을 연구합니다.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f8cff'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='30' cy='30' r='12' fill='url(%23g)'/%3E%3Ccircle cx='72' cy='50' r='12' fill='url(%23g)'/%3E%3Ccircle cx='34' cy='74' r='12' fill='url(%23g)'/%3E%3Cpath d='M30 30 L72 50 L34 74 Z' stroke='url(%23g)' stroke-width='5' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <canvas id="neural-bg" aria-hidden="true"></canvas>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="30" cy="30" r="11"/><circle cx="72" cy="50" r="11"/><circle cx="34" cy="74" r="11"/>
+        <path d="M30 30 L72 50 L34 74 Z" fill="none" stroke-width="5"/>
+      </svg>
+      <span>AutoML<em>Lab</em></span>
+    </a>
+    <button id="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu">
+      <li><a href="#research">연구 분야</a></li>
+      <li><a href="#professor">교수</a></li>
+      <li><a href="#members">멤버</a></li>
+      <li><a href="#publications">논문</a></li>
+      <li><a href="#projects">프로젝트</a></li>
+      <li><a href="#news">소식</a></li>
+      <li><a href="#join" class="nav-cta">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- ───────────── HERO ───────────── -->
+  <header id="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">KYONGGI UNIVERSITY · AI COMPUTER ENGINEERING</p>
+      <h1 class="hero-title">Auto<span class="grad">ML</span> Lab</h1>
+      <p class="hero-tagline">스스로 설계하는 AI를 만듭니다</p>
+      <p class="hero-typing">우리는 <span id="typing-target"></span><span class="cursor">|</span> 를 연구합니다</p>
+      <div class="hero-actions">
+        <a href="#join" class="btn btn-primary">연구실 지원하기</a>
+        <a href="#research" class="btn btn-ghost">연구 둘러보기</a>
+      </div>
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat"><span class="stat-num" id="stat-journal" data-target="0">0</span><span class="stat-label">국제 저널</span></div>
+        <div class="stat"><span class="stat-num" id="stat-conference" data-target="0">0</span><span class="stat-label">국제 학회</span></div>
+        <div class="stat"><span class="stat-num" id="stat-patent" data-target="0">0</span><span class="stat-label">특허 등록</span></div>
+        <div class="stat"><span class="stat-num" id="stat-award" data-target="2">0</span><span class="stat-label">Best Paper</span></div>
+      </div>
+    </div>
+    <a href="#research" class="scroll-hint" aria-label="아래로 스크롤"><span></span></a>
+  </header>
+
+  <main>
+    <!-- ───────────── RESEARCH ───────────── -->
+    <section id="research">
+      <div class="section-head reveal">
+        <p class="section-kicker">Research</p>
+        <h2>무엇을 연구하나요?</h2>
+        <p class="section-desc">"사람이 AI를 만드는 시대"에서 "AI가 AI를 만드는 시대"로. AutoML Lab은 기계학습의 설계 자체를 자동화합니다.</p>
+      </div>
+      <div class="research-grid">
+        <article class="research-card reveal" style="--card-accent:#4f8cff">
+          <div class="research-icon">🧬</div>
+          <h3>Neural Architecture Search</h3>
+          <p class="research-en">신경망 구조 탐색</p>
+          <p>신경망 설계를 사람이 아닌 알고리즘이 하도록 만듭니다. 밤새 하이퍼파라미터를 손으로 튜닝하는 대신, 탐색 알고리즘이 최적 구조를 찾아냅니다.</p>
+        </article>
+        <article class="research-card reveal" style="--card-accent:#a855f7">
+          <div class="research-icon">⚡</div>
+          <h3>Efficient Deep Learning</h3>
+          <p class="research-en">효율적 딥러닝</p>
+          <p>거대한 모델을 스마트폰에서도 돌아가게. 성능은 지키고 크기와 연산량은 줄이는, 작지만 강한 모델을 만드는 기술입니다.</p>
+        </article>
+        <article class="research-card reveal" style="--card-accent:#2dd4bf">
+          <div class="research-icon">🎯</div>
+          <h3>Feature Selection</h3>
+          <p class="research-en">특징 선택</p>
+          <p>수천 개 변수 중 진짜 중요한 것만 골라냅니다. 데이터의 본질을 찾아 모델을 가볍고 정확하게 만드는 연구입니다.</p>
+        </article>
+        <article class="research-card reveal" style="--card-accent:#f59e0b">
+          <div class="research-icon">🌱</div>
+          <h3>Evolutionary Algorithm</h3>
+          <p class="research-en">진화 알고리즘</p>
+          <p>생물 진화의 원리 — 선택, 교배, 변이 — 로 최적해를 탐색합니다. 자연에서 배운 알고리즘으로 어려운 최적화 문제를 풉니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ───────────── PROFESSOR ───────────── -->
+    <section id="professor">
+      <div class="section-head reveal">
+        <p class="section-kicker">Professor</p>
+        <h2>지도교수</h2>
+      </div>
+      <div class="prof-card reveal">
+        <div class="prof-photo-wrap">
+          <div class="prof-photo" id="prof-photo"><span>서</span></div>
+        </div>
+        <div class="prof-info">
+          <h3>서왕덕 <span class="prof-en">Wangduk Seo</span></h3>
+          <p class="prof-title">조교수 · 경기대학교 소프트웨어경영대학 AI컴퓨터공학부</p>
+          <div class="prof-columns">
+            <div>
+              <h4>학력</h4>
+              <ul>
+                <li><strong>공학박사</strong> 중앙대학교 컴퓨터공학과 <span class="dim">2019 – 2023</span><br><span class="dim small">딥러닝 학습 메커니즘 개선 · 지도교수 김대원</span></li>
+                <li><strong>공학석사</strong> 중앙대학교 컴퓨터공학과 <span class="dim">2017 – 2019</span><br><span class="dim small">다중 레이블 특징 선택 · 데이터 마이닝</span></li>
+                <li><strong>공학사</strong> 중앙대학교 컴퓨터공학부 <span class="dim">2011 – 2017</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4>경력</h4>
+              <ul>
+                <li><strong>조교수</strong> 경기대학교 AI컴퓨터공학부 <span class="dim">2024.09 – 현재</span></li>
+                <li><strong>전임연구원</strong> 중앙대학교 인공지능학과 <span class="dim">2023.09 – 2024.08</span></li>
+                <li><strong>시간강사</strong> 중앙대학교 인공지능학과 <span class="dim">2023.09 – 2024.02</span></li>
+              </ul>
+              <h4>수상</h4>
+              <ul>
+                <li>🏆 Best Paper Award — ICASI <span class="dim">2018</span></li>
+                <li>🏆 Best Paper Award — ICNCT <span class="dim">2018</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── MEMBERS ───────────── -->
+    <section id="members">
+      <div class="section-head reveal">
+        <p class="section-kicker">Members</p>
+        <h2>함께하는 사람들</h2>
+      </div>
+      <div id="members-grid" class="members-grid"></div>
+    </section>
+
+    <!-- ───────────── PUBLICATIONS ───────────── -->
+    <section id="publications">
+      <div class="section-head reveal">
+        <p class="section-kicker">Publications</p>
+        <h2>연구 성과</h2>
+      </div>
+      <div id="pub-filters" class="pub-filters reveal"></div>
+      <div id="pub-list" class="pub-list"></div>
+    </section>
+
+    <!-- ───────────── PROJECTS ───────────── -->
+    <section id="projects">
+      <div class="section-head reveal">
+        <p class="section-kicker">Projects</p>
+        <h2>연구 과제</h2>
+      </div>
+      <div id="projects-grid" class="projects-grid"></div>
+    </section>
+
+    <!-- ───────────── NEWS ───────────── -->
+    <section id="news">
+      <div class="section-head reveal">
+        <p class="section-kicker">News</p>
+        <h2>연구실 소식</h2>
+      </div>
+      <div id="news-timeline" class="news-timeline"></div>
+    </section>
+
+    <!-- ───────────── JOIN ───────────── -->
+    <section id="join">
+      <div class="section-head reveal">
+        <p class="section-kicker">Join Us</p>
+        <h2>AutoML Lab과 함께할 사람을 찾습니다</h2>
+        <p class="section-desc">AI가 AI를 설계하는 연구, 직접 해보고 싶다면 지금이 기회입니다. 신생 연구실의 첫 멤버가 되어 연구실의 문화를 함께 만들어가요.</p>
+      </div>
+      <div class="join-grid">
+        <article class="join-card reveal">
+          <h3>학부연구생</h3>
+          <p class="join-tag">연구 맛보기</p>
+          <ul>
+            <li>논문 읽기 스터디와 세미나 참여</li>
+            <li>PyTorch 기반 소규모 실험 프로젝트</li>
+            <li>대학원 진학 전 연구가 나에게 맞는지 확인</li>
+            <li>학점·전공 무관, 열정만 있으면 환영</li>
+          </ul>
+        </article>
+        <article class="join-card reveal featured">
+          <h3>석사과정</h3>
+          <p class="join-tag">본격 연구 시작</p>
+          <ul>
+            <li>본인 주제로 국제 학술지·학회 논문 도전</li>
+            <li>AutoML·효율적 딥러닝 실전 역량</li>
+            <li>국가 연구과제 참여 기회</li>
+            <li>졸업 후 AI 엔지니어·박사 진학 진로</li>
+          </ul>
+        </article>
+        <article class="join-card reveal">
+          <h3>박사과정</h3>
+          <p class="join-tag">독립 연구자로</p>
+          <ul>
+            <li>독자적 연구 어젠다 수립</li>
+            <li>탑티어 학회·저널 목표 집중 지도</li>
+            <li>국제 공동연구 네트워크</li>
+            <li>학계·산업 연구직 진출 지원</li>
+          </ul>
+        </article>
+      </div>
+      <div class="join-contact reveal">
+        <h3>지원 방법</h3>
+        <p>아래 메일로 <strong>이름 · 학번 · 관심 분야</strong>를 간단히 적어 보내주세요. 커피챗부터 시작합니다 ☕</p>
+        <a class="btn btn-primary btn-lg" href="mailto:wdseo@kyonggi.ac.kr?subject=[AutoML Lab 지원] 이름/학번">wdseo@kyonggi.ac.kr</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-logo">AutoML<em>Lab</em></p>
+        <p class="dim">경기대학교 소프트웨어경영대학 AI컴퓨터공학부</p>
+        <p class="dim">경기도 수원시 영통구 광교산로 154-42 수원캠퍼스</p>
+      </div>
+      <div>
+        <p class="dim">Tel. +82-31-249-1383</p>
+        <p class="dim">Mail. <a href="mailto:wdseo@kyonggi.ac.kr">wdseo@kyonggi.ac.kr</a></p>
+      </div>
+    </div>
+    <p class="footer-copy dim">© 2026 AutoML Lab, Kyonggi University.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
