@@ -222,14 +222,192 @@ function renderNews(list) {
   observeReveals(el);
 }
 
-/* ---------- 애니메이션 스텁 (Task 5에서 실제 구현으로 교체) ---------- */
+/* ---------- 모션 설정 ---------- */
+
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- 섹션 리빌 ---------- */
+
+const revealObserver = REDUCED_MOTION ? null : new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  }
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
 function observeReveals(root) {
-  (root || document).querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  (root || document).querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    if (revealObserver) revealObserver.observe(el);
+    else el.classList.add('visible');
+  });
+}
+
+/* ---------- 통계 카운트업 ---------- */
+
+let countUpDone = false;
+
+function animateCount(el, target) {
+  const dur = 1200, t0 = performance.now();
+  const tick = now => {
+    const p = Math.min((now - t0) / dur, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))); // ease-out cubic
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 }
 
 function startCountUp() {
-  document.querySelectorAll('.stat-num').forEach(el => { el.textContent = el.dataset.target; });
+  const stats = document.getElementById('hero-stats');
+  if (!stats) return;
+  const run = () => {
+    if (countUpDone) return;
+    countUpDone = true;
+    stats.querySelectorAll('.stat-num').forEach(el => {
+      const target = parseInt(el.dataset.target, 10) || 0;
+      if (REDUCED_MOTION) el.textContent = target;
+      else animateCount(el, target);
+    });
+  };
+  const io = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting)) { run(); io.disconnect(); }
+  }, { threshold: 0.4 });
+  io.observe(stats);
+}
+
+/* ---------- 타이핑 로테이션 ---------- */
+
+function startTyping() {
+  const el = document.getElementById('typing-target');
+  if (!el) return;
+  const words = ['신경망 구조 탐색', '효율적 딥러닝', '특징 선택', '진화 알고리즘'];
+  if (REDUCED_MOTION) { el.textContent = words.join(' · '); return; }
+  let wi = 0, ci = 0, deleting = false;
+  (function type() {
+    const word = words[wi];
+    ci += deleting ? -1 : 1;
+    el.textContent = word.slice(0, ci);
+    let delay = deleting ? 45 : 95;
+    if (!deleting && ci === word.length) { delay = 1700; deleting = true; }
+    else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 350; }
+    setTimeout(type, delay);
+  })();
+}
+
+/* ---------- 스크롤: 진행바 + 내비 상태 ---------- */
+
+function startScrollFx() {
+  const bar = document.getElementById('scroll-progress');
+  const nav = document.getElementById('navbar');
+  const links = [...document.querySelectorAll('#nav-menu a[href^="#"]')];
+  const sections = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    nav.classList.toggle('scrolled', window.scrollY > 24);
+
+    let current = null;
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= window.innerHeight * 0.4) current = s.id;
+    }
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}
+
+/* ---------- 모바일 메뉴 ---------- */
+
+function startNavToggle() {
+  const btn = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  });
+  menu.addEventListener('click', e => {
+    if (e.target.closest('a')) { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+}
+
+/* ---------- 신경망 파티클 배경 ---------- */
+
+function startNeuralBg() {
+  const canvas = document.getElementById('neural-bg');
+  const ctx = canvas.getContext('2d');
+  const mobile = window.innerWidth < 768;
+  const N = mobile ? 30 : 60;
+  const LINK_DIST = 140, MOUSE_R = 180;
+  let W, H, nodes = [], raf = null;
+  const mouse = { x: -9999, y: -9999 };
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function seed() {
+    nodes = Array.from({ length: N }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+      r: 1.2 + Math.random() * 1.8,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const n of nodes) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const d = Math.hypot(dx, dy);
+      if (d < MOUSE_R && d > 0.01) {
+        const f = (MOUSE_R - d) / MOUSE_R * 0.6;
+        n.x += (dx / d) * f; n.y += (dy / d) * f;
+      }
+    }
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < LINK_DIST) {
+          ctx.strokeStyle = `rgba(124, 140, 255, ${(1 - d / LINK_DIST) * 0.16})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+    for (const n of nodes) {
+      ctx.fillStyle = 'rgba(124, 150, 255, 0.55)';
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  function loop() { draw(); raf = requestAnimationFrame(loop); }
+
+  resize(); seed();
+
+  if (REDUCED_MOTION) { draw(); window.addEventListener('resize', () => { resize(); seed(); draw(); }); return; }
+
+  window.addEventListener('resize', () => { resize(); seed(); });
+  window.addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  window.addEventListener('pointerleave', () => { mouse.x = -9999; mouse.y = -9999; });
+  document.addEventListener('visibilitychange', () => {   // 탭 비활성 시 정지
+    if (document.hidden) { cancelAnimationFrame(raf); raf = null; }
+    else if (!raf) loop();
+  });
+  loop();
 }
 
 /* ---------- 교수 사진 — members.yml 의 교수 photo 필드와 자동 연동 ---------- */
@@ -248,6 +426,10 @@ function setProfPhoto(src) {
 
 async function boot() {
   observeReveals(document); // HTML에 정적으로 있는 .reveal 요소 처리
+  startTyping();
+  startScrollFx();
+  startNavToggle();
+  startNeuralBg();
 
   // members 먼저 (논문 저자 볼드에 멤버 이름 필요) — 실패해도 기본 이름으로 진행
   try {
