@@ -1,5 +1,11 @@
-desktop-*.png
-desktop-*.jpeg
-mobile-*.jpeg
+# 로컬 전용 — 저장소(공개)에 올리지 않는 파일
+CV_korean.tex
+CV_korean.pdf
+pic/
 .playwright-mcp/
 .DS_Store
+*.png
+*.jpeg
+!images/**/*.jpeg
+!images/**/*.png
+!images/**/*.jpg
