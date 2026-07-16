@@ -1,0 +1,5 @@
+desktop-*.png
+desktop-*.jpeg
+mobile-*.jpeg
+.playwright-mcp/
+.DS_Store

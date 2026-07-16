@@ -9,7 +9,7 @@
 - name: 서왕덕
   name_en: Wangduk Seo
   role: 교수
-  photo: images/members/wdseo.jpg
+  # photo: images/members/wdseo.jpg   # 사진 파일을 images/members/ 에 올린 뒤 이 줄의 # 을 지우세요
   interests: [Neural Architecture Search, Efficient Deep Learning, Feature Selection, Evolutionary Algorithm]
   email: wdseo@kyonggi.ac.kr
   joined: 2024-09

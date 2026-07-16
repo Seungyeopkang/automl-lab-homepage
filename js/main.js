@@ -55,6 +55,9 @@ function renderMembers(list) {
   valid.forEach(m => { labNames.add(m.name); if (m.name_en) labNames.add(m.name_en); });
   valid.sort((a, b) => (ROLE_ORDER[a.role] ?? 9) - (ROLE_ORDER[b.role] ?? 9));
 
+  const prof = valid.find(m => m.role === '교수' && m.photo);
+  if (prof) setProfPhoto(prof.photo);
+
   const cards = valid.map((m, i) => {
     const photo = m.photo
       ? `<img class="member-photo" src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy"
@@ -229,22 +232,22 @@ function startCountUp() {
   document.querySelectorAll('.stat-num').forEach(el => { el.textContent = el.dataset.target; });
 }
 
-/* ---------- 교수 사진 (있으면 표시, 없으면 이니셜 유지) ---------- */
+/* ---------- 교수 사진 — members.yml 의 교수 photo 필드와 자동 연동 ---------- */
 
-function tryProfPhoto() {
+function setProfPhoto(src) {
   const img = new Image();
   img.onload = () => {
     const wrap = document.getElementById('prof-photo');
     if (wrap) { wrap.innerHTML = ''; wrap.appendChild(img); wrap.classList.add('has-photo'); }
   };
-  img.alt = '서왕덕 교수';
-  img.src = 'images/members/wdseo.jpg';
+  img.alt = '지도교수 사진';
+  img.src = src;
 }
 
 /* ---------- 부트스트랩 ---------- */
 
 async function boot() {
-  tryProfPhoto();
+  observeReveals(document); // HTML에 정적으로 있는 .reveal 요소 처리
 
   // members 먼저 (논문 저자 볼드에 멤버 이름 필요) — 실패해도 기본 이름으로 진행
   try {
