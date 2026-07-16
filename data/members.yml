@@ -1,0 +1,15 @@
+# ─────────────────────────────────────────────
+# 연구실 멤버 목록
+# 새 멤버 추가: 아래 형식을 복사해서 맨 아래에 붙여넣고 수정하세요.
+# role 은 다음 중 하나: 교수 | 박사과정 | 석사과정 | 학부연구생 | 졸업생
+# photo 를 비우면 이름 첫 글자 아바타가 자동으로 표시됩니다.
+# 자세한 방법은 UPDATE_GUIDE.md 참고.
+# ─────────────────────────────────────────────
+
+- name: 서왕덕
+  name_en: Wangduk Seo
+  role: 교수
+  photo: images/members/wdseo.jpg
+  interests: [Neural Architecture Search, Efficient Deep Learning, Feature Selection, Evolutionary Algorithm]
+  email: wdseo@kyonggi.ac.kr
+  joined: 2024-09

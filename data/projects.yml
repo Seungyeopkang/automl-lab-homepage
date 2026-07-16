@@ -1,0 +1,30 @@
+# ─────────────────────────────────────────────
+# 연구과제 목록
+# 새 과제 추가: 아래 형식을 복사해서 맨 위에 붙여넣고 수정하세요.
+# status 는 다음 중 하나: 진행중 | 완료
+# 자세한 방법은 UPDATE_GUIDE.md 참고.
+# ─────────────────────────────────────────────
+
+- title: "Deep Learning Framework for On-Device AI"
+  period: 2019.03 – 2022
+  funder: 한국연구재단
+  description: 온디바이스 AI를 위한 신경망 구조 탐색 기법 개발. 모바일·엣지 기기에서 돌아가는 초경량 신경망을 자동 설계한다.
+  status: 완료
+
+- title: "Korean Music Reproducing System based on Cultural Aesthetics"
+  period: 2019.03 – 2022
+  funder: 한국연구재단
+  description: 문화적 미학에 기반한 음악 스타일 자동 재편곡 시스템 개발.
+  status: 완료
+
+- title: "Computer-based 3D Medical Image Analysis for Orbital Disease Assessment"
+  period: 2017.06 – 2022
+  funder: 한국연구재단
+  description: 안와 질환의 객관적 진단을 위한 3차원 의료영상 분석 딥러닝 모델 개발 (1·2차 연속 과제).
+  status: 완료
+
+- title: "Intelligent Healthcare Platform for Atopic Treatment"
+  period: 2019.03 – 2022
+  funder: 한국연구재단
+  description: 바이오·임상 융합 정보를 활용한 아토피 치료 지능형 헬스케어 플랫폼 — 의료 데이터셋을 위한 머신러닝 프레임워크 개발.
+  status: 완료

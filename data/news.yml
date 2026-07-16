@@ -1,0 +1,30 @@
+# ─────────────────────────────────────────────
+# 연구실 소식 (최신순 — 새 소식은 맨 위에 추가)
+# category 는 다음 중 하나: paper (논문) | award (수상) | member (멤버) | etc (기타)
+# date 형식: YYYY-MM
+# 자세한 방법은 UPDATE_GUIDE.md 참고.
+# ─────────────────────────────────────────────
+
+- date: 2026-07
+  category: etc
+  text: "AutoML Lab 홈페이지 오픈 🎉"
+
+- date: 2026-01
+  category: paper
+  text: "Scientific Reports 논문 게재 — LLM 기반 동요 가사 정렬 배경 애니메이션 자동 생성"
+
+- date: 2026-01
+  category: paper
+  text: "한국컴퓨터정보학회논문지 게재 — NA-Search: 정규화·활성화 함수의 미분 가능 탐색"
+
+- date: 2025-06
+  category: paper
+  text: "Symmetry 논문 게재 — ChainImputer: 누적 특징 기반 신경망 반복 대치 기법"
+
+- date: 2024-09
+  category: member
+  text: "서왕덕 교수, 경기대학교 AI컴퓨터공학부 조교수 부임 — AutoML Lab 시작"
+
+- date: 2024-07
+  category: paper
+  text: "UAI 2024 논문 발표 — Unsupervised Feature Selection towards Pattern Discrimination Power"

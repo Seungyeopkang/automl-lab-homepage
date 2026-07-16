@@ -1,0 +1,143 @@
+# ─────────────────────────────────────────────
+# 논문 / 특허 목록
+# 새 논문 추가: 아래 형식을 복사해서 맨 위에 붙여넣고 수정하세요 (연도별 자동 정렬됨).
+# type 은 다음 중 하나: journal (국제저널) | conference (국제학회) | domestic (국내저널) | patent (특허)
+# highlight: true 를 붙이면 ★ 대표 실적 배지가 표시됩니다.
+# link 는 선택 사항 (논문 URL 또는 DOI 링크).
+# 자세한 방법은 UPDATE_GUIDE.md 참고.
+# ─────────────────────────────────────────────
+
+- title: "Automatic Background Animation Generation Aligned with LLM-generated Lyrics for Children's Songs"
+  authors: "Sanghyuck Lee, Timur Khairulov, Ye-Chan Park, Wangduk Seo, Jaesung Lee"
+  venue: Scientific Reports
+  year: 2026
+  type: journal
+
+- title: "NA-Search: Differentiable Search of Normalization and Activation"
+  authors: "Wangduk Seo"
+  venue: 한국컴퓨터정보학회논문지
+  venue_full: "Journal of The Korea Society of Computer and Information"
+  year: 2026
+  type: domestic
+
+- title: "ChainImputer: A Neural Network-Based Iterative Imputation Method Using Cumulative Features"
+  authors: "Wangduk Seo, Timur Khairulov, Hye-Jin Baek, Jaesung Lee"
+  venue: Symmetry
+  year: 2025
+  type: journal
+
+- title: "Unsupervised Feature Selection towards Pattern Discrimination Power"
+  authors: "Wangduk Seo, Jaesung Lee"
+  venue: UAI
+  venue_full: "The 40th Conference on Uncertainty in Artificial Intelligence"
+  year: 2024
+  type: conference
+  highlight: true
+
+- title: "Memetic Multilabel Feature Selection using Pruned Refinement Process"
+  authors: "Wangduk Seo, Jaegyun Park, Sanghyuck Lee, A-Seong Moon, Dae-Won Kim, Jaesung Lee"
+  venue: Journal of Big Data
+  year: 2024
+  type: journal
+  highlight: true
+
+- title: "A Short Survey and Comparison of CNN-based Music Genre Classification using Multiple Spectral Features"
+  authors: "Wangduk Seo, Sung-Hyun Cho, Pawel Teisseyre, Jaesung Lee"
+  venue: IEEE Access
+  year: 2023
+  type: journal
+
+- title: "Efficient Human Activity Recognition using Lookup Table-based Neural Architecture Search for Mobile Devices"
+  authors: "Won-Seon Lim, Wangduk Seo, Dae-Won Kim, Jaesung Lee"
+  venue: IEEE Access
+  year: 2023
+  type: journal
+
+- title: "Achieving an Optimal Group Structure in a Neural Architecture Search"
+  authors: "Wangduk Seo, Jaegyun Park, Won-Seon Lim, Dae-Won Kim, Jaesung Lee"
+  venue: Electronics Letters
+  year: 2022
+  type: journal
+
+- title: "Effective Memetic Algorithm for Multilabel Feature Selection using Hybridization-based Communication"
+  authors: "Wangduk Seo, Minwoo Park, Dae-Won Kim, Jaesung Lee"
+  venue: Expert Systems with Applications
+  year: 2022
+  type: journal
+  highlight: true
+
+- title: "Neural Network-based Method for Diagnosis and Severity Assessment of Graves' Orbitopathy using Orbital Computed Tomography"
+  authors: "Jaesung Lee, Wangduk Seo, Jaegyun Park, Won-Seon Lim, Ja Young Oh, Nam Ju Moon, Jeong Kyu Lee"
+  venue: Scientific Reports
+  year: 2022
+  type: journal
+
+- title: "Generalized Information-theoretic Criterion for Multi-label Feature Selection"
+  authors: "Wangduk Seo, Dae-Won Kim, Jaesung Lee"
+  venue: IEEE Access
+  year: 2019
+  type: journal
+
+- title: "Compact feature subset-based multi-label music categorization for mobile devices"
+  authors: "Jaesung Lee, Wangduk Seo, Jin-Hyeong Park, Dae-Won Kim"
+  venue: Multimedia Tools and Applications
+  year: 2019
+  type: journal
+
+- title: "Effective Evolutionary Multilabel Feature Selection under a Budget Constraint"
+  authors: "Jaesung Lee, Wangduk Seo, Dae-Won Kim"
+  venue: Complexity
+  year: 2018
+  type: journal
+
+- title: "Evolutionary Multilabel Feature Selection Using Promising Feature Subset Generation"
+  authors: "Jaesung Lee, Wangduk Seo, Ho Han, Dae-Won Kim"
+  venue: Journal of Sensors
+  year: 2018
+  type: journal
+
+- title: "Explosive Reproduction-based Memetic Search for Effective Multi-label Feature Selection"
+  authors: "Wangduk Seo, Ho Han, Dae-Won Kim, Jaesung Lee"
+  venue: ICASI
+  venue_full: "International Conference on Applied System Innovation — 구두발표 · Best Paper Award"
+  year: 2018
+  type: conference
+  highlight: true
+
+- title: "Toward Accurate Music Classification using Local Set-based Multi-label Prototype Selection"
+  authors: "Wangduk Seo, Sanghyun Seo, Sang Oh Park, Mucheol Kim, Jaesung Lee"
+  venue: ICNCT
+  venue_full: "International Conference on Next-generation Convergence Technology — 구두발표 · Best Paper Award"
+  year: 2018
+  type: conference
+
+- title: "Effective Multi-label Feature Selection based on Large Offspring Set created by Enhanced Evolutionary Search Process"
+  authors: "Hyunki Lim, Wangduk Seo, Jaesung Lee"
+  venue: 한국컴퓨터정보학회논문지
+  venue_full: "Journal of The Korea Society of Computer and Information"
+  year: 2018
+  type: domestic
+
+- title: "Efficient Information-theoretic Unsupervised Feature Selection"
+  authors: "Jaesung Lee, Wangduk Seo, Dae-Won Kim"
+  venue: Electronics Letters
+  year: 2017
+  type: journal
+
+- title: "비지도 학습 기반 특징 선택 방법 및 장치 (제10-2092026호)"
+  authors: "서왕덕 외"
+  venue: 대한민국 특허 등록
+  year: 2020
+  type: patent
+
+- title: "다중 레이블 패턴 분류를 위한 특징 하위 집합 생성 방법 및 그 장치 (제10-2066157호)"
+  authors: "서왕덕 외"
+  venue: 대한민국 특허 등록
+  year: 2020
+  type: patent
+
+- title: "다중 레이블 패턴 분류를 위한 특징 선택 방법 및 그 장치 (제10-2025280호)"
+  authors: "서왕덕 외"
+  venue: 대한민국 특허 등록
+  year: 2019
+  type: patent
